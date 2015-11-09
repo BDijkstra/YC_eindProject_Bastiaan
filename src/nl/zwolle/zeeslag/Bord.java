@@ -31,5 +31,15 @@ public class Bord {
 		
 	}
 	
+	public boolean checkGeldigheidCoordinaten(int x, int y){
+		if (x>bordBreedte || y>bordLengte ){
+			return false;
+		}
+				
+		return true;
+		
+		
+		
+	}
 	
 }

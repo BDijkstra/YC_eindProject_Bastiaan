@@ -15,7 +15,8 @@ public class Speler {
 	}
 	
 	public void schietOpVakje(int x, int y){
-		Vakje.
+	
+		
 		
 	}
 	
