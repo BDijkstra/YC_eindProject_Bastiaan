@@ -17,9 +17,18 @@ public class Speler {
 	public void schietOpVakje(Bord b, int x, int y){
 	
 		
-		b.checkGeldigheidCoordinaten(x, y);
+		if(b.checkGeldigheidCoordinaten(x, y)){
+			
+		b.vakjeArray[x][y].setBeschoten(true);
 		
-		b.vakjeArray[x][y];
+		
+		if (b.vakjeArray[x][y].isBevatBoot()){
+			System.out.println("Boem!");
+		} else{
+			System.out.println("Plons");
+		}
+		
+		
 		
 		
 		
