@@ -20,7 +20,9 @@ public class Spel {
 		System.out.println("y?");
 		y=scan.nextInt();
 		
-		System.out.println("u schoot op vakje: "+x+"x "+y);
+		speler.schietOpVakje(bord, x, y);
+		
+		System.out.println("u schoot op vakje: "+x+"x"+y);
 		
 		
 

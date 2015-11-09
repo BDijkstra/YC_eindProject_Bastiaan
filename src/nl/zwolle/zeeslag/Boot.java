@@ -35,7 +35,6 @@ public class Boot {
 
 
 	// Constructor die de lengte vanuit de Type Enum op de lengte van het boot object set.
-
 	public Boot(Type type){
 		this.type = type;
 		lengte = type.getLengte();
