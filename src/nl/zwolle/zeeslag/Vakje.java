@@ -1,3 +1,4 @@
+package nl.zwolle.zeeslag;
 
 public class Vakje {
 private boolean bevatBoot;
