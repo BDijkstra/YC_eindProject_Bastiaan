@@ -14,8 +14,13 @@ public class Speler {
 		this.naam = naam;
 	}
 	
-	public void schietOpVakje(int x, int y){
+	public void schietOpVakje(Bord b, int x, int y){
 	
+		
+		b.checkGeldigheidCoordinaten(x, y);
+		
+		b.vakjeArray[x][y];
+		
 		
 		
 	}
