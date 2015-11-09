@@ -20,19 +20,20 @@ public class Vakje {
 		this.beschoten = beschoten;
 	}
 
-	public boolean checkOfBootNogLeeft() {
+	public boolean checkOfBootNogLeeft(Boot boot) {
 
 		// haalt de lengte van het bootobject op en trekt daar 1 van af. Als de
 		// lengte van de boot 0 is, word deze op 'dood' gezet.
 		if (bevatBoot) {
 			if (beschoten) {
-				// if(boot.getLengte()==0){
-				// int veranderLengte =boot.getLengte() -1;
-				// boot.setLengte(veranderLengte);
-				return false;
+				if (boot.getLengte() == 0) {
+					int veranderLengte = boot.getLengte() - 1;
+					boot.setLengte(veranderLengte);
+					return false;
+				}
 			}
-		}
 
+		}
 		return true;
 	}
 }
