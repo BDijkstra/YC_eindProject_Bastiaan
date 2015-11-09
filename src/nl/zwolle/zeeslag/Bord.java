@@ -1,15 +1,32 @@
 package nl.zwolle.zeeslag;
 
-import java.util.ArrayList;
-import java.util.List;
+
 
 public class Bord {
-
+	
+	
+	// bord instance variabelen
 	private int bordBreedte;
 	private int bordLengte;
-	List<Vakje> vakjeArray = new ArrayList<Vakje>();
+	Vakje[][] vakjeArray;
 	
-	public Bord(){
+	
+	// bord constructor, maak bord dmv arraylist
+	public Bord(int x, int y){
+		
+				
+		bordBreedte = x;
+		bordLengte =y;		
+		vakjeArray = new Vakje[x][y];
+		
+		//Vul de ArrayList met Vakjes.
+		for (int ix=0; ix<= x; ix++){
+			
+			for (int iy=0; iy<= y; iy++){
+				vakjeArray[ix][iy] = new Vakje();
+				
+			}
+		}
 		
 		
 	}
