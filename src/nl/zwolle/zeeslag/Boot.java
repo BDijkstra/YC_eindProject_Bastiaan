@@ -83,7 +83,9 @@ public class Boot {
 
 
 	//plaats boot
-	public void plaatsBoot(Bord b, int x, int y){
+	public void plaatsBoot(Bord b, int x, int y, boolean ligging){
+		
+		this.ligging = ligging;
 
 		boolean legalePlaats = true;
 		// als alle velden nog geen boten bevatten plaats de boot

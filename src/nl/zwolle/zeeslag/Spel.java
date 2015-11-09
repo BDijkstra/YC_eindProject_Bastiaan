@@ -12,7 +12,7 @@ public class Spel {
 		
 		Bord bord = new Bord(x,y);
 		Boot z = new Boot(Type.Onderzeer);
-		z.plaatsBoot(bord, 6, 6);	
+		z.plaatsBoot(bord, 6, 6, false);	
 		
 		
 		
