@@ -1,6 +1,6 @@
 package nl.zwolle.zeeslag;
 
-
+//Een enum klasse die elk type schip een vaste lengte geeft
 enum Type {Vliegdekschip(5),Slagschip(4),Onderzeer(3), Torpedojager(3), Patrouilleship(2);
 	private int lengte;
 	
@@ -24,7 +24,10 @@ public class Boot {
 	
 		
 	private Type type;
-	//constructor
+
+	
+	// Constructor die de lengte vanuit de Type Enum op de lengte van het boot object set.
+
 	public Boot(Type type){
 		this.type = type;
 		lengte = type.getLengte();
