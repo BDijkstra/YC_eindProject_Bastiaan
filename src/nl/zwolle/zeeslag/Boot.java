@@ -17,13 +17,17 @@ enum Type {Vliegdekschip(5),Slagschip(4),Onderzeer(3), Torpedojager(3), Patrouil
 
 public class Boot {
 	
+	//instance variables
 	private int lengte;
 	private boolean geraakt;
+	private boolean ligging; // true = horizontaal, false = verticaal
 	
-	
+		
 	private Type type;
+
 	
 	// Constructor die de lengte vanuit de Type Enum op de lengte van het boot object set.
+
 	public Boot(Type type){
 		this.type = type;
 		lengte = type.getLengte();
@@ -31,7 +35,7 @@ public class Boot {
 
 	
 
-	
+	//getters en setters
 
 	public int getLengte() {
 		return lengte;
@@ -47,6 +51,21 @@ public class Boot {
 
 	public void setGeraakt(boolean geraakt) {
 		this.geraakt = geraakt;
+	}
+	
+	
+	//plaats boot
+	public void plaatsBoot(int x, int y){
+	
+		// als alle velden nog geen boten bevatten plaats de boot
+		
+		// bereken all coordinaten
+		
+		// bekijk of er al boten zijn
+		
+		
+		
+		
 	}
 
 }
