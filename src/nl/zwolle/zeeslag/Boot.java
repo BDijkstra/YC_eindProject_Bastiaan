@@ -107,7 +107,7 @@ public class Boot {
 		for (int ix = xMin; ix<=xMax; ix++){
 			for (int iy = yMin; iy<=yMax; iy++){
 
-				if (b.vakjeArray[ix][iy].isBevatBoot() || b.checkGeldigheidCoordinaten(ix, iy)){
+				if (b.vakjeArray[ix][iy].isBevatBoot() || !(b.checkGeldigheidCoordinaten(ix, iy))){
 					legalePlaats = false;
 					break;
 				}
