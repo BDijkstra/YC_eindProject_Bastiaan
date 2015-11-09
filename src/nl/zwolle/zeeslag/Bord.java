@@ -20,9 +20,9 @@ public class Bord {
 		vakjeArray = new Vakje[x][y];
 		
 		//Vul de ArrayList met Vakjes.
-		for (int ix=0; ix<= x; ix++){
+		for (int ix=0; ix< x; ix++){
 			
-			for (int iy=0; iy<= y; iy++){
+			for (int iy=0; iy< y; iy++){
 				vakjeArray[ix][iy] = new Vakje();
 				
 			}
@@ -30,7 +30,7 @@ public class Bord {
 		
 		
 	}
-	
+	// kijk of de coordinaat geldig is
 	public boolean checkGeldigheidCoordinaten(int x, int y){
 		if (x>bordBreedte || y>bordLengte ){
 			return false;
