@@ -17,10 +17,16 @@ enum Type {Vliegdekschip(5),Slagschip(4),Onderzeer(3), Torpedojager(3), Patrouil
 
 public class Boot {
 
+	// static variabelen
+	private static int idCounter = 1;
+	
 	//instance variables
+	private int levens;
 	private int lengte;
-	private boolean geraakt;
+	private boolean dood;
+	
 	private boolean ligging; // true = horizontaal, false = verticaal
+	private int id;
 
 	// coordinaten van de gehele boot
 	private int xMin;
@@ -38,6 +44,11 @@ public class Boot {
 	public Boot(Type type){
 		this.type = type;
 		lengte = type.getLengte();
+		setLevens(lengte);
+		
+		this.id = idCounter;
+		idCounter++;
+		
 	}
 
 
@@ -52,13 +63,23 @@ public class Boot {
 		this.lengte = lengte;
 	}
 
-	public boolean isGeraakt() {
-		return geraakt;
+	public int getLevens() {
+		return levens;
 	}
 
-	public void setGeraakt(boolean geraakt) {
-		this.geraakt = geraakt;
+	public void setLevens(int levens) {
+		this.levens = levens;
 	}
+	public boolean isDood() {
+		return dood;
+	}
+
+
+
+	public void setDood(boolean dood) {
+		this.dood = dood;
+	}
+
 
 
 	//plaats boot
@@ -77,42 +98,49 @@ public class Boot {
 
 		}else{
 			yMax = y+ lengte;
-			
 			xMax = x;
 		}
 
 		// bekijk of er al boten zijn op die posities
+		// en of de boot niet buiten het veld valt.
 
-		for (int ix = x; ix<=xMax; ix++){
-			for (int iy = y; iy<=yMax; iy++){
+		for (int ix = xMin; ix<=xMax; ix++){
+			for (int iy = yMin; iy<=yMax; iy++){
 
-				if (b.vakjeArray[ix][iy].isBevatBoot()){
+				if (b.vakjeArray[ix][iy].isBevatBoot() || b.checkGeldigheidCoordinaten(ix, iy)){
 					legalePlaats = false;
 					break;
 				}
-
-
 			}
-
-
 		}
+		// als dat niet zo is, plaats boot op elk vakje
 		if (legalePlaats){
+			
+			for (int ix = xMin; ix<=xMax; ix++){
+				for (int iy = yMin; iy<=yMax; iy++){
 
-
-			// plaats boot op elk vakje
-			for (int ix = x; ix<=xMax; ix++){
-				for (int iy = y; iy<=yMax; iy++){
-
-					b.vakjeArray[ix][iy].isBevatBoot();
+					b.vakjeArray[ix][iy].setBevatBoot(true, this);
 
 				}
-
-
 			}
-
-
 		}
 	}
+	
+	public void verliesLeven(){
+		levens--;
+		if (levens <= 0){
+			dood = true;
+		}
+	}
+
+
+
+	
+
+
+	
+	
+	
 
 }
 

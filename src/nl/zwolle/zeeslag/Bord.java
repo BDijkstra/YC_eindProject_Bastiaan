@@ -8,6 +8,20 @@ public class Bord {
 	// bord instance variabelen
 	private int bordBreedte;
 	private int bordLengte;
+	// getters and setters
+	
+	public int getBordBreedte() {
+		return bordBreedte;
+	}
+	public void setBordBreedte(int bordBreedte) {
+		this.bordBreedte = bordBreedte;
+	}
+	public int getBordLengte() {
+		return bordLengte;
+	}
+	public void setBordLengte(int bordLengte) {
+		this.bordLengte = bordLengte;
+	}
 	Vakje[][] vakjeArray;
 	
 	
@@ -30,7 +44,7 @@ public class Bord {
 		
 		
 	}
-	// kijk of de coordinaat geldig is
+	// kijk of de coordinaat geldig is, dus binnen de het veld valt.
 	public boolean checkGeldigheidCoordinaten(int x, int y){
 		if (x>bordBreedte || y>bordLengte ){
 			return false;

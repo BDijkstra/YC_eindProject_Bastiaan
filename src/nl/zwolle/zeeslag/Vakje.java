@@ -1,15 +1,20 @@
 package nl.zwolle.zeeslag;
 
 public class Vakje {
+	
+	// instace variablelen
 	private boolean bevatBoot;
 	private boolean beschoten;
-
+	Boot o;
+	
+	// getters and setters
 	public boolean isBevatBoot() {
 		return bevatBoot;
 	}
 
-	public void setBevatBoot(boolean bevatBoot) {
+	public void setBevatBoot(boolean bevatBoot, Boot o) {
 		this.bevatBoot = bevatBoot;
+		this.o = o;
 	}
 
 	public boolean isBeschoten() {
@@ -18,22 +23,13 @@ public class Vakje {
 
 	public void setBeschoten(boolean beschoten) {
 		this.beschoten = beschoten;
+		
 	}
+	
+	
+	//methoden
+	
+	
+	
 
-	public boolean checkOfBootNogLeeft(Boot boot) {
-
-		// haalt de lengte van het bootobject op en trekt daar 1 van af. Als de
-		// lengte van de boot 0 is, word deze op 'dood' gezet.
-		if (bevatBoot) {
-			if (beschoten) {
-				if (boot.getLengte() == 0) {
-					int veranderLengte = boot.getLengte() - 1;
-					boot.setLengte(veranderLengte);
-					return false;
-				}
-			}
-
-		}
-		return true;
-	}
 }

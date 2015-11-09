@@ -11,9 +11,13 @@ public class Spel {
 		int y =10;
 		
 		Bord bord = new Bord(x,y);
+		Boot z = new Boot(Type.Onderzeer);
+		z.plaatsBoot(bord, 6, 6);	
+		
+		
 		
 		Scanner scan = new Scanner(System.in);
-		
+		 while(true){
 		System.out.println("Welkom bij Zeeslag.");
 		System.out.println("er is een bord van 10x10 gegenereerd, op welk vakje wilt u schieten? x?");
 		x=scan.nextInt();
@@ -23,7 +27,7 @@ public class Spel {
 		speler.schietOpVakje(bord, x, y);
 		
 		System.out.println("u schoot op vakje: "+x+"x"+y);
-		
+		 }
 		
 
 	}
