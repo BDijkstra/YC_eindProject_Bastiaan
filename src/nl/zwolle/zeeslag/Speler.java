@@ -3,8 +3,11 @@ package nl.zwolle.zeeslag;
 public class Speler {
 
 	private String naam;
-	private Bord bord;
+	protected Bord bord;
+	private Boot[] bootArray;
+	private int hoeveelheidBoten=-1;
 
+	// Overloaded constructors met standaard waarden: Naam=AI, x=10, y=10 (grootte van het bord)
 	public Speler() {
 		this("AI");
 
@@ -18,6 +21,11 @@ public class Speler {
 	public Speler(String naam, int xCoordinaat, int yCoordinaat) {
 		bord = new Bord(xCoordinaat, yCoordinaat);
 		this.naam = naam;
+	}
+	
+
+	public Boot[] getBootArray() {
+		return bootArray;
 	}
 
 	public String getNaam() {
@@ -53,4 +61,11 @@ public class Speler {
 		}
 
 	}
+	public void nieuweBoot(int x, int y, boolean ligging, int bootID){
+		Boot nieuwBoot = new Boot(bootID);
+		nieuwBoot.plaatsBoot(bord, x, y, ligging);
+		bootArray[hoeveelheidBoten+1]=nieuwBoot;
+	}
+	
+	
 }

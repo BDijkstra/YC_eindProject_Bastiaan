@@ -1,30 +1,46 @@
 package nl.zwolle.zeeslag;
 
 //Een enum klasse die elk type schip een vaste lengte geeft
-enum Type {Vliegdekschip(5),Slagschip(4),Onderzeer(3), Torpedojager(3), Patrouilleship(2);
-	private int lengte;
 
-	Type (int lengte){
-		this.lengte=lengte;
-	}
-
-	public int getLengte() {
-		return lengte;
-	}
-
-}
-
+//enum Type {Vliegdekschip(5),Slagschip(4),Onderzeer(3), Torpedojager(3), Patrouilleship(2);
+//	private int lengte;
+//	
+//
+//	Type (int lengte){
+//		this.lengte=lengte;
+//	}
+//
+//	public int getLengte() {
+//		return lengte;
+//	}
+//	public String toString(){
+//		String alleNamen = null;
+//		
+//		for()
+//		
+//		return alleNamen;
+//	}
+//
+//}
 
 public class Boot {
 
+	public static final int VLIEGDEKSHIP = 0;
+	public static final int SLAGSCHIP = 1;
+	public static final int ONDERZEER = 2;
+	public static final int TORPEDOJAGER = 3;
+	public static final int PATROUILLESHIP = 4;
+
+	public static String[] bootNamen = { "Vliegdekschip", "Slagschip", "Onderzeer", "Torpedojager", "Patrouilleship" };
+
 	// static variabelen
 	private static int idCounter = 1;
-	
-	//instance variables
+
+	// instance variables
 	private int levens;
 	private int lengte;
 	private boolean dood;
-	
+
 	private boolean ligging; // true = horizontaal, false = verticaal
 	private int id;
 
@@ -34,26 +50,36 @@ public class Boot {
 	private int yMin;
 	private int yMax;
 
+	// Constructor die de lengte vanuit de Type Enum op de lengte van het boot
+	// object set.
+	public Boot(int bootType) {
 
+		switch (bootType) {
 
+		case 0:
+			lengte = 5;
+			break;
+		case 1:
+			lengte = 4;
+			break;
+		case 2:
+			lengte = 3;
+			break;
+		case 3:
+			lengte = 3;
+			break;
+		case 4:
+			lengte = 2;
+			break;
+		}
 
-	private Type type;
-
-
-	// Constructor die de lengte vanuit de Type Enum op de lengte van het boot object set.
-	public Boot(Type type){
-		this.type = type;
-		lengte = type.getLengte();
-		levens =lengte;
-		
+		levens = lengte;
 		this.id = idCounter;
 		idCounter++;
-		
+
 	}
 
-
-
-	//getters en setters
+	// getters en setters
 
 	public int getLengte() {
 		return lengte;
@@ -70,21 +96,18 @@ public class Boot {
 	public void setLevens(int levens) {
 		this.levens = levens;
 	}
+
 	public boolean isDood() {
 		return dood;
 	}
-
-
 
 	public void setDood(boolean dood) {
 		this.dood = dood;
 	}
 
+	// plaats boot
+	public void plaatsBoot(Bord b, int x, int y, boolean ligging) {
 
-
-	//plaats boot
-	public void plaatsBoot(Bord b, int x, int y, boolean ligging){
-		
 		this.ligging = ligging;
 
 		boolean legalePlaats = true;
@@ -94,32 +117,37 @@ public class Boot {
 		xMin = x;
 		yMin = y;
 
-		if (ligging){
-			xMax = x+ lengte;
+		if (ligging) {
+			xMax = x + lengte-1;
 			yMax = y;
 
-		}else{
-			yMax = y+ lengte;
+		} else {
+			yMax = y + lengte-1;
 			xMax = x;
 		}
 
 		// bekijk of er al boten zijn op die posities
 		// en of de boot niet buiten het veld valt.
 
-		for (int ix = xMin; ix<=xMax; ix++){
-			for (int iy = yMin; iy<=yMax; iy++){
+		for (int ix = xMin; ix < xMax; ix++) {
+			for (int iy = yMin; iy < yMax; iy++) {
 
-				if (b.vakjeArray[ix][iy].isBevatBoot() || !(b.checkGeldigheidCoordinaten(ix, iy))){
+				// als het vakje zelf of de vakjes om het gekozen vakje een boot
+				// bevatten, of het is een ongeldig vakje kan de boot niet
+				// geplaatst worden
+				if (b.vakjeArray[ix][iy].isBevatBoot() || b.vakjeArray[ix - 1][iy].isBevatBoot()
+						|| b.vakjeArray[ix + 1][iy].isBevatBoot() || b.vakjeArray[ix][iy - 1].isBevatBoot()
+						|| b.vakjeArray[ix][iy + 1].isBevatBoot() || !(b.checkGeldigheidCoordinaten(ix, iy))) {
 					legalePlaats = false;
 					break;
 				}
 			}
 		}
 		// als dat niet zo is, plaats boot op elk vakje
-		if (legalePlaats){
-			
-			for (int ix = xMin; ix<=xMax; ix++){
-				for (int iy = yMin; iy<=yMax; iy++){
+		if (legalePlaats) {
+
+			for (int ix = xMin; ix <= xMax; ix++) {
+				for (int iy = yMin; iy <= yMax; iy++) {
 
 					b.vakjeArray[ix][iy].setBevatBoot(true, this);
 
@@ -127,23 +155,12 @@ public class Boot {
 			}
 		}
 	}
-	
-	public void verliesLeven(){
+
+	public void verliesLeven() {
 		levens--;
-		if (levens <= 0){
+		if (levens <= 0) {
 			dood = true;
 		}
 	}
 
-
-
-	
-
-
-	
-	
-	
-
 }
-
-
