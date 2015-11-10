@@ -138,6 +138,8 @@ public class Computer extends Speler {
 						}
 
 					} else {
+						b.vakjeArray[computerX][computerY].setBeschoten(true);
+						shotSucceeded =true;
 						System.out.println("Plons");
 						secondHit = false;
 					}
