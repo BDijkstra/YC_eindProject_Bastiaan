@@ -22,42 +22,47 @@ public class Spel {
 		//speler1.nieuweBoot(6, 6, false, 1);
 		
 		
-		Speler speler2 = new Speler("Speler2",10,10);
+		Computer speler2 = new Computer(10,10);
 		speler2.nieuweBoot(2, 3, false, 1);
 		//speler2.nieuweBoot(6, 6, false, 1);
 		
-		Scanner scan = new Scanner(System.in);
-		
-		System.out.println("Welkom bij Zeeslag.");
-		System.out.println("Beide spelers hebben een bord van 10x10 vakjes met 2 slagschepen elk");
-		while(true){
-			
-			System.out.println("Speler 1 mag schieten, geef coordinaten aub. x?");
-			int tempX= scan.nextInt();
-			System.out.println("y?");
-			int tempY= scan.nextInt();
-			speler1.schietOpVakje(speler2.getBord(),tempX, tempY);
+		while (true){
+			speler2.schietOpVakje(speler1.getBord());
 			System.out.println(speler1.getBord().toString());
-			
-			if(speler2.spelerHeeftVerloren()){
-				System.out.println("Alle boten van de tegenstander zijn vernietigd, u hebt gewonnen!");
-				break;
-			}
-			
-			System.out.println("Speler 2 mag schieten, geef coordinaten aub. x?");
-			tempX= scan.nextInt();
-			System.out.println("y?");
-			tempY= scan.nextInt();
-			speler2.schietOpVakje(speler1.getBord(),tempX, tempY);
-			System.out.println(speler2.getBord().toString());
-			
-			if(speler1.spelerHeeftVerloren()){
-				System.out.println("Alle boten van de tegenstander zijn vernietigd, u hebt gewonnen!");
-				break;
-			}
-			
-			
 		}
+		
+//		Scanner scan = new Scanner(System.in);
+		
+//		System.out.println("Welkom bij Zeeslag.");
+//		System.out.println("Beide spelers hebben een bord van 10x10 vakjes met 2 slagschepen elk");
+//		while(true){
+//			
+//			System.out.println("Speler 1 mag schieten, geef coordinaten aub. x?");
+//			int tempX= scan.nextInt();
+//			System.out.println("y?");
+//			int tempY= scan.nextInt();
+//			speler1.schietOpVakje(speler2.getBord(),tempX, tempY);
+//			System.out.println(speler1.getBord().toString());
+//			
+//			if(speler2.spelerHeeftVerloren()){
+//				System.out.println("Alle boten van de tegenstander zijn vernietigd, u hebt gewonnen!");
+//				break;
+//			}
+//			
+//			System.out.println("Speler 2 mag schieten, geef coordinaten aub. x?");
+//			tempX= scan.nextInt();
+//			System.out.println("y?");
+//			tempY= scan.nextInt();
+//			speler2.schietOpVakje(speler1.getBord(),tempX, tempY);
+//			System.out.println(speler2.getBord().toString());
+//			
+//			if(speler1.spelerHeeftVerloren()){
+//				System.out.println("Alle boten van de tegenstander zijn vernietigd, u hebt gewonnen!");
+//				break;
+//			}
+//			
+//			
+//		}
 
 		
 		
