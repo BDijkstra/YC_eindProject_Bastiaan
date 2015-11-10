@@ -12,6 +12,13 @@ public class Computer extends Speler {
 	int computerY = 0;
 	int rangeFromInitialHit =2;
 
+	
+	//constructor
+	public Computer(int xCoordinaat, int yCoordinaat) {
+		bord = new Bord(xCoordinaat, yCoordinaat);
+		
+	}
+	
 	// overloaded method from Speler
 	public void schietOpVakje(Bord b) {
 

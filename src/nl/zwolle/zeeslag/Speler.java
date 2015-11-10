@@ -2,10 +2,10 @@ package nl.zwolle.zeeslag;
 
 public class Speler {
 
-	private String naam;
+	protected String naam;
 	protected Bord bord;
-	private Boot[] bootArray;
-	private int hoeveelheidBoten=-1;
+	protected Boot[] bootArray;
+	protected int hoeveelheidBoten=-1;
 
 	// Overloaded constructors met standaard waarden: Naam=AI, x=10, y=10 (grootte van het bord)
 	public Speler() {
@@ -73,6 +73,7 @@ public class Speler {
 		for(Boot boot: bootArray){
 			
 		}
+		return false; // tijdelijk
 	}
 	
 }
