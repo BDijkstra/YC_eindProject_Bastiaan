@@ -14,6 +14,8 @@ public class Spel {
 		Boot z = new Boot(Type.Onderzeer);
 		z.plaatsBoot(bord, 6, 6, false);	
 		
+//		System.out.println(bord.toString());
+		
 		
 		
 		Scanner scan = new Scanner(System.in);
@@ -25,8 +27,9 @@ public class Spel {
 		y=scan.nextInt();
 		
 		speler.schietOpVakje(bord, x, y);
-		
+		System.out.println(bord.toString());
 		System.out.println("u schoot op vakje: "+x+"x"+y);
+		
 		 }
 		
 

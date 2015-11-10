@@ -1,12 +1,12 @@
 package nl.zwolle.zeeslag;
 
 public class Vakje {
-	
+
 	// instace variablelen
 	private boolean bevatBoot;
 	private boolean beschoten;
 	Boot o;
-	
+
 	// getters and setters
 	public boolean isBevatBoot() {
 		return bevatBoot;
@@ -23,13 +23,21 @@ public class Vakje {
 
 	public void setBeschoten(boolean beschoten) {
 		this.beschoten = beschoten;
-		
+
 	}
-	
-	
-	//methoden
-	
-	
-	
+
+	@Override
+	public String toString() {
+		if (beschoten) {
+			if (bevatBoot) {
+				return "$";
+			} else {
+				return "x";
+			}
+
+		}
+		return "o";
+	}
+	// methoden
 
 }
