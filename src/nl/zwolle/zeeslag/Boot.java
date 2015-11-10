@@ -44,7 +44,7 @@ public class Boot {
 	public Boot(Type type){
 		this.type = type;
 		lengte = type.getLengte();
-		setLevens(lengte);
+		levens =lengte;
 		
 		this.id = idCounter;
 		idCounter++;
