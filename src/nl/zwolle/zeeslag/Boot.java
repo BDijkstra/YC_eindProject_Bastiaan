@@ -1,27 +1,6 @@
 package nl.zwolle.zeeslag;
 
-//Een enum klasse die elk type schip een vaste lengte geeft
 
-//enum Type {Vliegdekschip(5),Slagschip(4),Onderzeer(3), Torpedojager(3), Patrouilleship(2);
-//	private int lengte;
-//	
-//
-//	Type (int lengte){
-//		this.lengte=lengte;
-//	}
-//
-//	public int getLengte() {
-//		return lengte;
-//	}
-//	public String toString(){
-//		String alleNamen = null;
-//		
-//		for()
-//		
-//		return alleNamen;
-//	}
-//
-//}
 
 public class Boot {
 

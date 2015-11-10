@@ -41,9 +41,11 @@ public class Speler {
 	}
 
 	// als coordinaat geldig is en niet al eerder is beschoten, schiet
-	public void schietOpVakje(Bord bord, int xCoordinaat, int yCoordinaat) {
-		int x = xCoordinaat-1;
-		int y = yCoordinaat-1;
+	public void schietOpVakje(Bord bord, int x, int y) {
+		
+		//user ingegeven coordinaten worden -1 geshift zodat ze in de array passen.
+//		int x = xCoordinaat-1;
+//		int y = yCoordinaat-1;
 
 		if (bord.checkGeldigheidCoordinaten(x, y) && !(bord.vakjeArray[x][y].isBeschoten())) {
 
