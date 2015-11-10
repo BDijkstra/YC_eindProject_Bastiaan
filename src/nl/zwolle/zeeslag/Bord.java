@@ -32,10 +32,10 @@ public class Bord {
 		bordLengte = y;
 		vakjeArray = new Vakje[x][y];
 
-		// Vul de ArrayList met Vakjes.
-		for (int ix = x - 1; ix >= 0; ix--) {
+		// Vul de Array met Vakjes.
+		for (int ix = 0; ix <10; ix++) {
 
-			for (int iy = y - 1; iy >= 0; iy--) {
+			for (int iy = 0; iy <10; iy++) {
 
 				vakjeArray[ix][iy] = new Vakje();
 
