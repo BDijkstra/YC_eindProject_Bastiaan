@@ -70,7 +70,7 @@ public class Computer extends Speler {
 
 
 	public void targetedShot(Bord b){
-		
+
 		if(secondHit == true){
 			continuedTargetedShot(b);
 		}else{
@@ -114,25 +114,27 @@ public class Computer extends Speler {
 				// check whether this coordinate is valid	
 
 
-				if (b.checkGeldigheidCoordinaten(computerX, computerY) && !(b.vakjeArray[computerX][computerY].isBeschoten())){
+				if (b.checkGeldigheidCoordinaten(computerX, computerY) ){
+					if(!(b.vakjeArray[computerX][computerY].isBeschoten())){
 
-					
-					b.vakjeArray[computerX][computerY].setBeschoten(true);
-					System.out.println(computerX + " " + computerY);
-					shotSucceeded =true;
 
-					if (b.vakjeArray[computerX][computerY].isBevatBoot()) {
-						
-						b.vakjeArray[computerX][computerY].boot.verliesLeven();
-						secondHit = true;
-						System.out.println("Boem!");
-						
-						
-						if (b.vakjeArray[computerX][computerY].boot.isDood()){
-							hitCoordinateX = -1;
-							hitCoordinateY = -1;
-							secondHit = false;
-							System.out.println("Boot gezonken");
+						b.vakjeArray[computerX][computerY].setBeschoten(true);
+						System.out.println(computerX + " " + computerY);
+						shotSucceeded =true;
+
+						if (b.vakjeArray[computerX][computerY].isBevatBoot()) {
+
+							b.vakjeArray[computerX][computerY].boot.verliesLeven();
+							secondHit = true;
+							System.out.println("Boem!");
+
+
+							if (b.vakjeArray[computerX][computerY].boot.isDood()){
+								hitCoordinateX = -1;
+								hitCoordinateY = -1;
+								secondHit = false;
+								System.out.println("Boot gezonken");
+							}
 						}
 
 					} else {
@@ -176,8 +178,8 @@ public class Computer extends Speler {
 
 
 		if (!b.checkGeldigheidCoordinaten(computerX, computerY) || b.vakjeArray[computerX][computerY].isBeschoten()){
-			
-			
+
+
 			deltaDirection = false; // turn shootingposition around
 			rangeFromInitialHit = 1; // reset 
 			shootLeftOfX(b);
@@ -197,8 +199,8 @@ public class Computer extends Speler {
 				System.out.println("Boot gezonken");
 			}
 		} else { // als mis
-			
-			
+
+
 			b.vakjeArray[computerX][computerY].setBeschoten(true);
 			deltaDirection = false;
 			rangeFromInitialHit =1;
@@ -217,7 +219,7 @@ public class Computer extends Speler {
 
 		if (!b.checkGeldigheidCoordinaten(computerX, computerY) || b.vakjeArray[computerX][computerY].isBeschoten()){
 
-			
+
 			deltaDirection = true; // turn shootingposition around
 			rangeFromInitialHit =1; // reset 
 			shootLeftOfX(b);
@@ -237,7 +239,7 @@ public class Computer extends Speler {
 				System.out.println("Boot gezonken");
 			}
 		} else { // als mis
-			
+
 			b.vakjeArray[computerX][computerY].setBeschoten(true);
 			deltaDirection = true;
 			rangeFromInitialHit =1;

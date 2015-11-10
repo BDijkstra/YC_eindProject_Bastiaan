@@ -46,7 +46,7 @@ public class Bord {
 
 	// kijk of de coordinaat geldig is, dus binnen de het veld valt.
 	public boolean checkGeldigheidCoordinaten(int x, int y) {
-		if (x > bordBreedte || y > bordLengte) {
+		if (x > bordBreedte -1 || y > bordLengte -1) {
 			return false;
 		}
 
@@ -62,21 +62,18 @@ public class Bord {
 		StringBuilder sb = new StringBuilder();
 		
 		
-		
-
-		for (int i = bordLengte - 1; i >= 0; i--) {
-			Vakje[] losVakjeArray = vakjeArray[i];
+		for (int j = bordLengte -1; j>= 0; j--){
 			
-			for (int j = 0; j < bordBreedte; j++) {
-				Vakje vakje = losVakjeArray[j];
-				
-				
-				sb.append(vakje.toString());
-				sb.append(" ");
-			}
-			sb.append("\n");
+		for (int i = 0; i <=bordBreedte -1 ;i++){
+		 
+			sb.append(vakjeArray[i][j].toString());
+			sb.append(" ");							// eerste is 0,9
+		
+		
 		}
-
+		sb.append("\n");
+		}
+		
 		String output = sb.toString();
 
 		return output;
