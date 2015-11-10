@@ -4,25 +4,25 @@ public class Speler {
 
 	protected String naam;
 	protected Bord bord;
-	protected Boot[] bootArray;
-	protected int hoeveelheidBoten=-1;
+	protected Boot[] bootArray= new Boot[1];
+	protected int hoeveelheidBoten = 0;
 
-	// Overloaded constructors met standaard waarden: Naam=AI, x=10, y=10 (grootte van het bord)
+	// Overloaded constructors met standaard waarden: Naam=AI, x=10, y=10
+	// (grootte van het bord)
 	public Speler() {
 		this("AI");
 
 	}
 
 	public Speler(String naam) {
-		this(naam,10,10);
-		
+		this(naam, 10, 10);
+
 	}
 
 	public Speler(String naam, int xCoordinaat, int yCoordinaat) {
 		bord = new Bord(xCoordinaat, yCoordinaat);
 		this.naam = naam;
 	}
-	
 
 	public Boot[] getBootArray() {
 		return bootArray;
@@ -61,24 +61,26 @@ public class Speler {
 		}
 
 	}
-	public void nieuweBoot(int x, int y, boolean ligging, int bootID){
+
+	public void nieuweBoot(int x, int y, boolean ligging, int bootID) {
 		Boot nieuwBoot = new Boot(bootID);
 		nieuwBoot.plaatsBoot(bord, x, y, ligging);
-		bootArray[hoeveelheidBoten+1]=nieuwBoot;
+		bootArray[hoeveelheidBoten] = nieuwBoot;
+		hoeveelheidBoten++;
 	}
-	
-	public boolean spelerHeeftVerloren(){
-		
+
+	public boolean spelerHeeftVerloren() {
+
 		int teller = 0;
-		for(Boot boot: bootArray){
-			if(boot.isDood()){
+		for (Boot boot : bootArray) {
+			if (boot.isDood()) {
 				teller++;
 			}
 		}
-		if(teller==hoeveelheidBoten){
+		if (teller == hoeveelheidBoten) {
 			return true;
 		}
 		return false;
 	}
-	
+
 }
