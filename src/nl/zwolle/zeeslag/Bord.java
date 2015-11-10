@@ -56,12 +56,21 @@ public class Bord {
 
 	@Override
 	public String toString() {
+		
+		
+		
 		StringBuilder sb = new StringBuilder();
+		
+		
+		
 
-		for (int i = bordBreedte - 1; i >= 0; i--) {
+		for (int i = bordLengte - 1; i >= 0; i--) {
 			Vakje[] losVakjeArray = vakjeArray[i];
-			for (int j = 0; j < bordLengte; j++) {
+			
+			for (int j = 0; j < bordBreedte; j++) {
 				Vakje vakje = losVakjeArray[j];
+				
+				
 				sb.append(vakje.toString());
 				sb.append(" ");
 			}
