@@ -151,8 +151,12 @@ public class Computer extends Speler {
 	}
 
 
-
+	
 	public void continuedTargetedShot(Bord b){
+		
+		//search further for the boat
+		//determine direction of continued shot
+
 		System.out.println("Continued targeted shot");
 
 		if(shootingPosition == true){
@@ -182,7 +186,7 @@ public class Computer extends Speler {
 		if (!b.checkGeldigheidCoordinaten(computerX, computerY) || b.vakjeArray[computerX][computerY].isBeschoten()){
 
 
-			deltaDirection = false; // turn shootingposition around
+			deltaDirection = false; // turn shooting position around
 			rangeFromInitialHit = 1; // reset 
 			shootLeftOfX(b);
 
