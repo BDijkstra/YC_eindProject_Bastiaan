@@ -36,19 +36,18 @@ public class Spel {
 			int tempX= scan.nextInt();
 			System.out.println("y?");
 			int tempY= scan.nextInt();
-			speler1.schietOpVakje(tempX, tempY);
+			speler1.schietOpVakje(speler2.getBord(),tempX, tempY);
 			System.out.println(speler1.getBord().toString());
 			
 			System.out.println("Speler 2 mag schieten, geef coordinaten aub. x?");
 			tempX= scan.nextInt();
 			System.out.println("y?");
 			tempY= scan.nextInt();
-			speler2.schietOpVakje(tempX, tempY);
+			speler2.schietOpVakje(speler1.getBord(),tempX, tempY);
 			System.out.println(speler2.getBord().toString());
 			
-			for(Boot boot:speler1.getBootArray()){
-				
-			}
+			
+			
 			
 		}
 

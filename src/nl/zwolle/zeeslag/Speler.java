@@ -41,7 +41,7 @@ public class Speler {
 	}
 
 	// als coordinaat geldig is en niet al eerder is beschoten, schiet
-	public void schietOpVakje(int x, int y) {
+	public void schietOpVakje(Bord bord, int x, int y) {
 
 		if (bord.checkGeldigheidCoordinaten(x, y) && !(bord.vakjeArray[x][y].isBeschoten())) {
 
@@ -67,5 +67,12 @@ public class Speler {
 		bootArray[hoeveelheidBoten+1]=nieuwBoot;
 	}
 	
+	public boolean spelerHeeftVerloren(){
+		
+		int teller = 0;
+		for(Boot boot: bootArray){
+			
+		}
+	}
 	
 }
