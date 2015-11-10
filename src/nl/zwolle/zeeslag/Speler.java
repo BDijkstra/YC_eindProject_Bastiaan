@@ -4,7 +4,7 @@ public class Speler {
 
 	protected String naam;
 	protected Bord bord;
-	protected Boot[] bootArray= new Boot[1];
+	protected Boot[] bootArray= new Boot[2];
 	protected int hoeveelheidBoten = 0;
 
 	// Overloaded constructors met standaard waarden: Naam=AI, x=10, y=10
@@ -41,7 +41,9 @@ public class Speler {
 	}
 
 	// als coordinaat geldig is en niet al eerder is beschoten, schiet
-	public void schietOpVakje(Bord bord, int x, int y) {
+	public void schietOpVakje(Bord bord, int xCoordinaat, int yCoordinaat) {
+		int x = xCoordinaat-1;
+		int y = yCoordinaat-1;
 
 		if (bord.checkGeldigheidCoordinaten(x, y) && !(bord.vakjeArray[x][y].isBeschoten())) {
 
