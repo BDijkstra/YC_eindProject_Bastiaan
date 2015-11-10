@@ -33,9 +33,10 @@ public class Bord {
 		vakjeArray = new Vakje[x][y];
 
 		// Vul de ArrayList met Vakjes.
-		for (int ix = 0; ix < x; ix++) {
+		for (int ix = x - 1; ix >= 0; ix--) {
 
-			for (int iy = 0; iy < y; iy++) {
+			for (int iy = y - 1; iy >= 0; iy--) {
+
 				vakjeArray[ix][iy] = new Vakje();
 
 			}
@@ -57,14 +58,16 @@ public class Bord {
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 
-		for (Vakje[] losVakjeArray : vakjeArray) {
-			for (Vakje losVakje : losVakjeArray) {
-				sb.append(losVakje.toString());
+		for (int i = bordBreedte - 1; i >= 0; i--) {
+			Vakje[] losVakjeArray = vakjeArray[i];
+			for (int j = 0; j < bordLengte; j++) {
+				Vakje vakje = losVakjeArray[j];
+				sb.append(vakje.toString());
 				sb.append(" ");
 			}
 			sb.append("\n");
-			
 		}
+
 		String output = sb.toString();
 
 		return output;
