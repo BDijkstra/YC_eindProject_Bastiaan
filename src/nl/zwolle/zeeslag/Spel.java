@@ -5,29 +5,41 @@ import java.util.Scanner;
 public class Spel {
 
 	public static void main(String[] args) {
-		Speler speler = new Speler();
 		
-		int x=10;
-		int y =10;
+		int x;
+		int y;
 		
-		Bord bord = new Bord(x,y);
+		
+		
+		
+		//Bord bord = new Bord(x,y);
 		Boot z = new Boot(Type.Onderzeer);
-		z.plaatsBoot(bord, 6, 6, false);	
+		
+		
+
 		
 		
 		
 		Scanner scan = new Scanner(System.in);
 		 
 		System.out.println("Welkom bij Zeeslag.");
+		System.out.println("Hoe groot moet het bord zijn? x?");
+		int bordX= scan.nextInt();
+		System.out.println("y?");
+		int bordY= scan.nextInt();
+		Speler speler = new Speler("Henk",bordX,bordY);
+		z.plaatsBoot(speler.getBord(), 6, 6, false);	
+		
 		while(true){
-		System.out.println("er is een bord van 10x10 gegenereerd, op welk vakje wilt u schieten? x?");
+		System.out.println("op welk vakje wilt u schieten? x?");
 		x=scan.nextInt();
 		System.out.println("y?");
 		y=scan.nextInt();
 		
-		speler.schietOpVakje(bord, x, y);
-		
+		speler.schietOpVakje(x, y);
+		System.out.println(speler.getBord().toString());
 		System.out.println("u schoot op vakje: "+x+"x"+y);
+		
 		 }
 		
 

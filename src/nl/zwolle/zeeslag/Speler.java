@@ -3,6 +3,7 @@ package nl.zwolle.zeeslag;
 public class Speler {
 
 	private String naam;
+	private Bord bord;
 
 	public Speler() {
 		this("AI");
@@ -10,6 +11,12 @@ public class Speler {
 	}
 
 	public Speler(String naam) {
+		this(naam,10,10);
+		
+	}
+
+	public Speler(String naam, int xCoordinaat, int yCoordinaat) {
+		bord = new Bord(xCoordinaat, yCoordinaat);
 		this.naam = naam;
 	}
 
@@ -21,22 +28,24 @@ public class Speler {
 		this.naam = naam;
 	}
 
-	
-	//als coordinaat geldig is en niet al eerder is beschoten, schiet
-	public void schietOpVakje(Bord b, int x, int y) {
+	public Bord getBord() {
+		return bord;
+	}
 
-		if (b.checkGeldigheidCoordinaten(x, y) && !(b.vakjeArray[x][y].isBeschoten())){
+	// als coordinaat geldig is en niet al eerder is beschoten, schiet
+	public void schietOpVakje(int x, int y) {
 
-		
-			b.vakjeArray[x][y].setBeschoten(true);
+		if (bord.checkGeldigheidCoordinaten(x, y) && !(bord.vakjeArray[x][y].isBeschoten())) {
 
-			if (b.vakjeArray[x][y].isBevatBoot()) {
+			bord.vakjeArray[x][y].setBeschoten(true);
+
+			if (bord.vakjeArray[x][y].isBevatBoot()) {
 				System.out.println("Boem!");
-				b.vakjeArray[x][y].boot.verliesLeven();
-				if (b.vakjeArray[x][y].boot.isDood()){
+				bord.vakjeArray[x][y].boot.verliesLeven();
+				if (bord.vakjeArray[x][y].boot.isDood()) {
 					System.out.println("Boot gezonken");
 				}
-			
+
 			} else {
 				System.out.println("Plons");
 			}
