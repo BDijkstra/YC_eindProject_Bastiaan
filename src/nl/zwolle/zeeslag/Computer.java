@@ -51,6 +51,7 @@ public class Computer extends Speler {
 						b.vakjeArray[computerX][computerY].boot.verliesLeven();
 						hitCoordinateX = computerX;
 						hitCoordinateY = computerY;
+						
 						if (b.vakjeArray[computerX][computerY].boot.isDood()){
 							hitCoordinateX = -1;
 							hitCoordinateY = -1;
@@ -114,8 +115,8 @@ public class Computer extends Speler {
 				// check whether this coordinate is valid	
 
 
-				if (b.checkGeldigheidCoordinaten(computerX, computerY) ){
-					if(!(b.vakjeArray[computerX][computerY].isBeschoten())){
+				if (b.checkGeldigheidCoordinaten(computerX, computerY)&& (!(b.vakjeArray[computerX][computerY].isBeschoten()))){
+					
 
 
 						b.vakjeArray[computerX][computerY].setBeschoten(true);
@@ -135,15 +136,17 @@ public class Computer extends Speler {
 								secondHit = false;
 								System.out.println("Boot gezonken");
 							}
+						}else{ //if field is empty
+							System.out.println("Plons");
+							secondHit = false;
 						}
 
-					} else {
-						b.vakjeArray[computerX][computerY].setBeschoten(true);
-						shotSucceeded =true;
-						System.out.println("Plons");
+					} else { // if vakje is invalid
+						
+						shotSucceeded =false;
 						secondHit = false;
 					}
-				}
+				
 
 			}while(!shotSucceeded);
 
@@ -327,7 +330,6 @@ public class Computer extends Speler {
 		}
 
 	}
-
 }
 
 
