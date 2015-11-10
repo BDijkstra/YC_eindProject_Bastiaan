@@ -12,13 +12,13 @@ public class Computer extends Speler {
 	int computerY = 0;
 	int rangeFromInitialHit =2;
 
-	
+
 	//constructor
 	public Computer(int xCoordinaat, int yCoordinaat) {
 		bord = new Bord(xCoordinaat, yCoordinaat);
-		
+
 	}
-	
+
 	// overloaded method from Speler
 	public void schietOpVakje(Bord b) {
 
@@ -33,7 +33,7 @@ public class Computer extends Speler {
 
 			// else shoot at random coordinates, until the computer shot at a field that hasn't already been shot
 			do{
-
+				shotSucceeded = false;
 
 				computerX = (int) (Math.random() * b.getBordBreedte());
 				computerY = (int) (Math.random() * b.getBordLengte());
@@ -44,6 +44,7 @@ public class Computer extends Speler {
 
 					b.vakjeArray[computerX][computerY].setBeschoten(true);
 					shotSucceeded =true;
+					System.out.println(computerX + " " + computerY);
 
 					if (b.vakjeArray[computerX][computerY].isBevatBoot()) {
 						System.out.println("Boem!");
@@ -62,42 +63,51 @@ public class Computer extends Speler {
 				}
 
 			}while(!shotSucceeded);
-			shotSucceeded = false;
+
 		}
 	}
 
 
 
 	public void targetedShot(Bord b){
-
+		
 		if(secondHit == true){
 			continuedTargetedShot(b);
-		} else{
-
+		}else{
+			System.out.println("tageted shot:" +hitCoordinateX + " " + hitCoordinateY);
 
 
 			do{
+				shotSucceeded = false;
 
 				//shoot at random field around previous hit coordinate
 
 				// determine whether x or y is changed
 				double randomizer = Math.random();
 
-				if (randomizer>=0.0){
+				if (randomizer<0.25){
 					computerX = hitCoordinateX +1;
+					computerY = hitCoordinateY;
 					shootingPosition = true;
+					deltaDirection = true;
 				} else if
-				(randomizer>=0.25){
+				(randomizer<0.50){
 					computerX = hitCoordinateX -1;
+					computerY = hitCoordinateY;
 					shootingPosition = true;
+					deltaDirection = false;
 				} else if
-				(randomizer>=0.50){
-					computerX = hitCoordinateY +1;
+				(randomizer<0.75){
+					computerY = hitCoordinateY +1;
+					computerX = hitCoordinateX;
 					shootingPosition = false;
+					deltaDirection = true;
 				} else if
-				(randomizer>=0.75){
-					computerX = hitCoordinateY -1;
+				(randomizer<1.0){
+					computerY = hitCoordinateY -1;
+					computerX = hitCoordinateX;
 					shootingPosition = false;
+					deltaDirection = false;
 				}
 
 
@@ -107,14 +117,16 @@ public class Computer extends Speler {
 				if (b.checkGeldigheidCoordinaten(computerX, computerY) && !(b.vakjeArray[computerX][computerY].isBeschoten())){
 
 					b.vakjeArray[computerX][computerY].setBeschoten(true);
+					System.out.println(computerX + " " + computerY);
 					shotSucceeded =true;
 
 					if (b.vakjeArray[computerX][computerY].isBevatBoot()) {
+						
 						b.vakjeArray[computerX][computerY].boot.verliesLeven();
 						secondHit = true;
-
-
 						System.out.println("Boem!");
+						
+						
 						if (b.vakjeArray[computerX][computerY].boot.isDood()){
 							hitCoordinateX = -1;
 							hitCoordinateY = -1;
@@ -129,14 +141,14 @@ public class Computer extends Speler {
 				}
 
 			}while(!shotSucceeded);
-			shotSucceeded = false;
+
 		}
 	}
 
 
 
 	public void continuedTargetedShot(Bord b){
-
+		System.out.println("Continued targeted shot");
 
 		if(shootingPosition == true){
 			if(deltaDirection == true){
