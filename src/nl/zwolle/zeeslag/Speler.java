@@ -32,8 +32,8 @@ public class Speler {
 
 			if (b.vakjeArray[x][y].isBevatBoot()) {
 				System.out.println("Boem!");
-				b.vakjeArray[x][y].o.verliesLeven();
-				if (b.vakjeArray[x][y].o.isDood()){
+				b.vakjeArray[x][y].boot.verliesLeven();
+				if (b.vakjeArray[x][y].boot.isDood()){
 					System.out.println("Boot gezonken");
 				}
 			

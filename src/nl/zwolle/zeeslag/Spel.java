@@ -17,8 +17,9 @@ public class Spel {
 		
 		
 		Scanner scan = new Scanner(System.in);
-		 while(true){
+		 
 		System.out.println("Welkom bij Zeeslag.");
+		while(true){
 		System.out.println("er is een bord van 10x10 gegenereerd, op welk vakje wilt u schieten? x?");
 		x=scan.nextInt();
 		System.out.println("y?");

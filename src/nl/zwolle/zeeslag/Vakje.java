@@ -5,16 +5,16 @@ public class Vakje {
 	// instace variablelen
 	private boolean bevatBoot;
 	private boolean beschoten;
-	Boot o;
+	Boot boot;
 	
 	// getters and setters
 	public boolean isBevatBoot() {
 		return bevatBoot;
 	}
 
-	public void setBevatBoot(boolean bevatBoot, Boot o) {
+	public void setBevatBoot(boolean bevatBoot, Boot boot) {
 		this.bevatBoot = bevatBoot;
-		this.o = o;
+		this.boot = boot;
 	}
 
 	public boolean isBeschoten() {
