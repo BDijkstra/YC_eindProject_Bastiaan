@@ -95,11 +95,11 @@ public class Boot {
 		yMin = y;
 
 		if (ligging){
-			xMax = x+ lengte;
+			xMax = x+ lengte -1;
 			yMax = y;
 
 		}else{
-			yMax = y+ lengte;
+			yMax = y+ lengte -1;
 			xMax = x;
 		}
 
