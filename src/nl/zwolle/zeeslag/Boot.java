@@ -116,9 +116,7 @@ public class Boot {
 				// als het vakje zelf of de vakjes om het gekozen vakje een boot
 				// bevatten, of het is een ongeldig vakje kan de boot niet
 				// geplaatst worden
-				if (b.vakjeArray[ix][iy].isBevatBoot() || b.vakjeArray[ix - 1][iy].isBevatBoot()
-						|| b.vakjeArray[ix + 1][iy].isBevatBoot() || b.vakjeArray[ix][iy - 1].isBevatBoot()
-						|| b.vakjeArray[ix][iy + 1].isBevatBoot() || !(b.checkGeldigheidCoordinaten(ix, iy))) {
+				if (b.vakjeArray[ix][iy].isBevatBoot() || b.surroundedByBoats(ix, iy) || !(b.checkGeldigheidCoordinaten(ix, iy))) {
 					legalePlaats = false;
 					break;
 				}

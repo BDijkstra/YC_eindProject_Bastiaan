@@ -26,9 +26,11 @@ public class Spel {
 		speler2.nieuweBoot(2, 3, false, 1);
 		speler2.nieuweBoot(6, 6, false, 1);
 		
-		while(true){
+		int ij =0;
+		while( ij <100){
 			speler2.schietOpVakje(speler1.getBord());
 			System.out.println(speler1.getBord().toString());
+			ij++;
 		}
 		
 //		Scanner scan = new Scanner(System.in);
