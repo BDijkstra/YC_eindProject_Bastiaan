@@ -107,14 +107,13 @@ public class Boot {
 		// bekijk of er al boten zijn op die posities
 		// en of de boot niet buiten het veld valt.
 
-		for (int ix = xMin; ix < xMax; ix++) {
-			for (int iy = yMin; iy < yMax; iy++) {
+		for (int ix = xMin; ix <= xMax; ix++) {
+			for (int iy = yMin; iy <= yMax; iy++) {
 
 				// als het vakje zelf of de vakjes om het gekozen vakje een boot
 				// bevatten, of het is een ongeldig vakje kan de boot niet
 				// geplaatst worden
-				if (b.vakjeArray[ix][iy].isBevatBoot() || b.surroundedByBoats(ix, iy)
-						|| !(b.checkGeldigheidCoordinaten(ix, iy))) {
+				if ((!b.checkGeldigheidCoordinaten(ix, iy) || b.vakjeArray[ix][iy].isBevatBoot() || b.surroundedByBoats(ix, iy))) {
 
 					legalePlaats = false;
 					break;
@@ -124,8 +123,8 @@ public class Boot {
 		// als dat niet zo is, plaats boot op elk vakje
 		if (legalePlaats) {
 
-			for (int ix = xMin; ix < xMax; ix++) {
-				for (int iy = yMin; iy < yMax; iy++) {
+			for (int ix = xMin; ix <= xMax; ix++) {
+				for (int iy = yMin; iy <= yMax; iy++) {
 
 					b.vakjeArray[ix][iy].setBevatBoot(true, this);
 

@@ -6,7 +6,7 @@ public class Speler {
 
 	protected String naam;
 	protected Bord bord;
-	protected ArrayList<Boot> bootArray = new ArrayList<Boot>();
+	protected ArrayList<Boot> bootArray= new ArrayList<Boot>();
 	protected int hoeveelheidBoten = 0;
 
 	// Overloaded constructors met standaard waarden: Naam=AI, x=10, y=10

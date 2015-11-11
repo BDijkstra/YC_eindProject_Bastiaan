@@ -6,7 +6,9 @@ public class Spel {
 
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
-		
+		Speler test = new Speler();
+		test.nieuweBoot(4, 4, true, 2);
+		System.out.println(test.bord.toString(true));
 
 		while (true) {
 
@@ -36,7 +38,7 @@ public class Spel {
 				break;
 			}
 		}
-		scan.close();
+		
 	}
 
 	public static void spel1v1() {
@@ -87,7 +89,7 @@ public class Spel {
 				break;
 			}
 		}
-		scan.close();
+		
 	}
 
 	public static void spelMensVsComputer() {
@@ -127,7 +129,7 @@ public class Spel {
 				break;
 			}
 		}
-		scan.close();
+		
 
 	}
 
@@ -202,8 +204,8 @@ public class Spel {
 				}
 
 			}
-			scan.close();
+			
 		}
 	}
-
+	
 }

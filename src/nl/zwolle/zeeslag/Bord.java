@@ -33,9 +33,9 @@ public class Bord {
 		vakjeArray = new Vakje[x][y];
 
 		// Vul de Array met Vakjes.
-		for (int ix = 0; ix < 10; ix++) {
+		for (int ix = 0; ix < x; ix++) {
 
-			for (int iy = 0; iy < 10; iy++) {
+			for (int iy = 0; iy < y; iy++) {
 
 				vakjeArray[ix][iy] = new Vakje();
 
