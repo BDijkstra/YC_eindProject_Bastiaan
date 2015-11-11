@@ -70,7 +70,7 @@ public class Speler {
 		
 		Boot nieuwBoot = new Boot(bootID);
 		
-		if(nieuwBoot.plaatsBoot(b, x, y, ligging)){
+		if(nieuwBoot.plaatsBoot(bord, x, y, ligging)){
 		//nieuwBoot.plaatsBoot(bord, x, y, ligging);
 		bootArray[hoeveelheidBoten] = nieuwBoot;
 		hoeveelheidBoten++;}

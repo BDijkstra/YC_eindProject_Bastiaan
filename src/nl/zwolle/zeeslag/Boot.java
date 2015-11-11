@@ -85,7 +85,7 @@ public class Boot {
 	}
 
 	// plaats boot
-	public void plaatsBoot(Bord b, int x, int y, boolean ligging) {
+	public boolean plaatsBoot(Bord b, int x, int y, boolean ligging) {
 
 		this.ligging = ligging;
 
@@ -129,10 +129,11 @@ public class Boot {
 				for (int iy = yMin; iy <= yMax; iy++) {
 
 					b.vakjeArray[ix][iy].setBevatBoot(true, this);
+					
 
 				}
-			}
-		}
+			}return true;
+		}return false;
 	}
 
 	public void verliesLeven() {
