@@ -146,7 +146,7 @@ public class Spel {
 				y = (int) (Math.random() * maxBordY);
 				richting = (int) (Math.random() * 2);
 
-				computer.nieuweBoot(x, y, ligging, i);
+				
 				switch (richting) {
 				case 0:
 					ligging = true;
@@ -155,6 +155,8 @@ public class Spel {
 					ligging = false;
 					break;
 				}
+				
+				
 				if (computer.nieuweBoot(x, y, ligging, i)) {
 					System.out.println(computer.bord.toString(true));
 					break;
