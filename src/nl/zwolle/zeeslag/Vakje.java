@@ -7,7 +7,6 @@ public class Vakje {
 	private boolean beschoten;
 
 	Boot boot;
-	
 
 	// getters and setters
 	public boolean isBevatBoot() {
@@ -28,18 +27,31 @@ public class Vakje {
 
 	}
 
-	@Override
-	public String toString() {
-		if (beschoten) {
+	// Print de status van elk vakje uit. Als het bord van de speler zelf is dan
+	// worden alle boten aangegeven in het bord. zo niet, dan alleen de
+	// beschoten boten.
+	public String toString(boolean eigenbord) {
+
+		if (eigenbord) {
 			if (bevatBoot) {
 				return "$";
 			} else {
-				return "x";
+				return "o";
 			}
+		} else {
 
+			if (beschoten) {
+				if (bevatBoot) {
+					return "$";
+				} else {
+					return "x";
+				}
+
+			}
+			return "o";
 		}
-		return "o";
 	}
+
 	// methoden
 
 }

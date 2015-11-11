@@ -1,7 +1,5 @@
 package nl.zwolle.zeeslag;
 
-
-
 public class Boot {
 
 	public static final int VLIEGDEKSHIP = 0;
@@ -11,6 +9,7 @@ public class Boot {
 	public static final int PATROUILLESHIP = 4;
 
 	public static String[] bootNamen = { "Vliegdekschip", "Slagschip", "Onderzeer", "Torpedojager", "Patrouilleship" };
+	public static int[] bootLengten = {5,4, 3, 3, 2};
 
 	// static variabelen
 	private static int idCounter = 1;
@@ -96,27 +95,27 @@ public class Boot {
 		xMin = x;
 		yMin = y;
 
-
 		if (ligging) {
-			xMax = x + lengte-1;
+			xMax = x + lengte - 1;
 			yMax = y;
 
 		} else {
-			yMax = y + lengte-1;
+			yMax = y + lengte - 1;
 			xMax = x;
 		}
 
 		// bekijk of er al boten zijn op die posities
 		// en of de boot niet buiten het veld valt.
 
-		for (int ix = xMin; ix <= xMax; ix++) {
-			for (int iy = yMin; iy <= yMax; iy++) {
+		for (int ix = xMin; ix < xMax; ix++) {
+			for (int iy = yMin; iy < yMax; iy++) {
 
 				// als het vakje zelf of de vakjes om het gekozen vakje een boot
 				// bevatten, of het is een ongeldig vakje kan de boot niet
 				// geplaatst worden
-				if (b.vakjeArray[ix][iy].isBevatBoot() || b.surroundedByBoats(ix, iy) || !(b.checkGeldigheidCoordinaten(ix, iy))) {
-					
+				if (b.vakjeArray[ix][iy].isBevatBoot() || b.surroundedByBoats(ix, iy)
+						|| !(b.checkGeldigheidCoordinaten(ix, iy))) {
+
 					legalePlaats = false;
 					break;
 				}
@@ -125,15 +124,16 @@ public class Boot {
 		// als dat niet zo is, plaats boot op elk vakje
 		if (legalePlaats) {
 
-			for (int ix = xMin; ix <= xMax; ix++) {
-				for (int iy = yMin; iy <= yMax; iy++) {
+			for (int ix = xMin; ix < xMax; ix++) {
+				for (int iy = yMin; iy < yMax; iy++) {
 
 					b.vakjeArray[ix][iy].setBevatBoot(true, this);
-					
 
 				}
-			}return true;
-		}return false;
+			}
+			return true;
+		}
+		return false;
 	}
 
 	public void verliesLeven() {
