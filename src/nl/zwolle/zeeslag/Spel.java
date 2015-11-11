@@ -81,7 +81,7 @@ public class Spel {
 	}
 	
 	public static void spel1v1(){
-		
+		System.out.println("1v1 spel geselecteerd, Speler 1 mag ");
 	}
 
 }
