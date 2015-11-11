@@ -4,7 +4,7 @@ public class Speler {
 
 	protected String naam;
 	protected Bord bord;
-	protected Boot[] bootArray= new Boot[3];
+	protected Boot[] bootArray= new Boot[5];
 	protected int hoeveelheidBoten = 0;
 
 	// Overloaded constructors met standaard waarden: Naam=AI, x=10, y=10
@@ -65,12 +65,18 @@ public class Speler {
 		}
 
 	}
-
+	
 	public void nieuweBoot(int x, int y, boolean ligging, int bootID) {
+		
 		Boot nieuwBoot = new Boot(bootID);
-		nieuwBoot.plaatsBoot(bord, x, y, ligging);
+		
+		if(nieuwBoot.plaatsBoot(b, x, y, ligging)){
+		//nieuwBoot.plaatsBoot(bord, x, y, ligging);
 		bootArray[hoeveelheidBoten] = nieuwBoot;
-		hoeveelheidBoten++;
+		hoeveelheidBoten++;}
+		else{
+			//geeft foutmelding
+		}
 	}
 
 	public boolean spelerHeeftVerloren() {
