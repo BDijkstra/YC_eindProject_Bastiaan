@@ -51,6 +51,7 @@ public class Computer extends Speler {
 						b.vakjeArray[computerX][computerY].boot.verliesLeven();
 						hitCoordinateX = computerX;
 						hitCoordinateY = computerY;
+						
 						if (b.vakjeArray[computerX][computerY].boot.isDood()){
 							hitCoordinateX = -1;
 							hitCoordinateY = -1;
@@ -70,7 +71,7 @@ public class Computer extends Speler {
 
 
 	public void targetedShot(Bord b){
-		
+
 		if(secondHit == true){
 			continuedTargetedShot(b);
 		}else{
@@ -114,31 +115,38 @@ public class Computer extends Speler {
 				// check whether this coordinate is valid	
 
 
-				if (b.checkGeldigheidCoordinaten(computerX, computerY) && !(b.vakjeArray[computerX][computerY].isBeschoten())){
+				if (b.checkGeldigheidCoordinaten(computerX, computerY)&& (!(b.vakjeArray[computerX][computerY].isBeschoten()))){
+					
 
-					b.vakjeArray[computerX][computerY].setBeschoten(true);
-					System.out.println(computerX + " " + computerY);
-					shotSucceeded =true;
 
-					if (b.vakjeArray[computerX][computerY].isBevatBoot()) {
-						
-						b.vakjeArray[computerX][computerY].boot.verliesLeven();
-						secondHit = true;
-						System.out.println("Boem!");
-						
-						
-						if (b.vakjeArray[computerX][computerY].boot.isDood()){
-							hitCoordinateX = -1;
-							hitCoordinateY = -1;
+						b.vakjeArray[computerX][computerY].setBeschoten(true);
+						System.out.println(computerX + " " + computerY);
+						shotSucceeded =true;
+
+						if (b.vakjeArray[computerX][computerY].isBevatBoot()) {
+
+							b.vakjeArray[computerX][computerY].boot.verliesLeven();
+							secondHit = true;
+							System.out.println("Boem!");
+
+
+							if (b.vakjeArray[computerX][computerY].boot.isDood()){
+								hitCoordinateX = -1;
+								hitCoordinateY = -1;
+								secondHit = false;
+								System.out.println("Boot gezonken");
+							}
+						}else{ //if field is empty
+							System.out.println("Plons");
 							secondHit = false;
-							System.out.println("Boot gezonken");
 						}
 
-					} else {
-						System.out.println("Plons");
+					} else { // if vakje is invalid
+						
+						shotSucceeded =false;
 						secondHit = false;
 					}
-				}
+				
 
 			}while(!shotSucceeded);
 
@@ -146,8 +154,12 @@ public class Computer extends Speler {
 	}
 
 
-
+	
 	public void continuedTargetedShot(Bord b){
+		
+		//search further for the boat
+		//determine direction of continued shot
+
 		System.out.println("Continued targeted shot");
 
 		if(shootingPosition == true){
@@ -169,19 +181,21 @@ public class Computer extends Speler {
 
 
 	public void shootRightOfX(Bord b){
-
+		System.out.println("x+1");
 		computerX = hitCoordinateX + rangeFromInitialHit; //+ for right or up, - for left or down
 		computerY = hitCoordinateY;
 
 
 		if (!b.checkGeldigheidCoordinaten(computerX, computerY) || b.vakjeArray[computerX][computerY].isBeschoten()){
 
-			deltaDirection = false; // turn shootingposition around
-			rangeFromInitialHit =1; // reset 
+
+			deltaDirection = false; // turn shooting position around
+			rangeFromInitialHit = 1; // reset 
 			shootLeftOfX(b);
 
 		} else if (b.vakjeArray[computerX][computerY].isBevatBoot()){
 
+			b.vakjeArray[computerX][computerY].setBeschoten(true);
 			b.vakjeArray[computerX][computerY].boot.verliesLeven();
 			System.out.println("Boem!");
 			rangeFromInitialHit += 1;
@@ -195,6 +209,8 @@ public class Computer extends Speler {
 			}
 		} else { // als mis
 
+
+			b.vakjeArray[computerX][computerY].setBeschoten(true);
 			deltaDirection = false;
 			rangeFromInitialHit =1;
 			System.out.println("Plons");
@@ -205,11 +221,13 @@ public class Computer extends Speler {
 
 
 	private void shootLeftOfX(Bord b) {
+		System.out.println("x-1");
 		computerX = hitCoordinateX - rangeFromInitialHit; //+ for right or up, - for left or down
 		computerY = hitCoordinateY;
 
 
 		if (!b.checkGeldigheidCoordinaten(computerX, computerY) || b.vakjeArray[computerX][computerY].isBeschoten()){
+
 
 			deltaDirection = true; // turn shootingposition around
 			rangeFromInitialHit =1; // reset 
@@ -217,6 +235,7 @@ public class Computer extends Speler {
 
 		} else if (b.vakjeArray[computerX][computerY].isBevatBoot()){
 
+			b.vakjeArray[computerX][computerY].setBeschoten(true);
 			b.vakjeArray[computerX][computerY].boot.verliesLeven();
 			System.out.println("Boem!");
 			rangeFromInitialHit += 1;
@@ -230,6 +249,7 @@ public class Computer extends Speler {
 			}
 		} else { // als mis
 
+			b.vakjeArray[computerX][computerY].setBeschoten(true);
 			deltaDirection = true;
 			rangeFromInitialHit =1;
 			System.out.println("Plons");
@@ -238,7 +258,7 @@ public class Computer extends Speler {
 	}
 
 	public void shootAboveofY(Bord b){
-
+		System.out.println("y+1");
 		computerX = hitCoordinateX; 
 		computerY = hitCoordinateY+ rangeFromInitialHit; //+ for right or up, - for left or down;
 
@@ -251,6 +271,7 @@ public class Computer extends Speler {
 
 		} else if (b.vakjeArray[computerX][computerY].isBevatBoot()){
 
+			b.vakjeArray[computerX][computerY].setBeschoten(true);
 			b.vakjeArray[computerX][computerY].boot.verliesLeven();
 			System.out.println("Boem!");
 			rangeFromInitialHit += 1;
@@ -264,6 +285,7 @@ public class Computer extends Speler {
 			}
 		} else { // als mis
 
+			b.vakjeArray[computerX][computerY].setBeschoten(true);
 			deltaDirection = false;
 			rangeFromInitialHit =1;
 			System.out.println("Plons");
@@ -274,6 +296,7 @@ public class Computer extends Speler {
 
 
 	private void shootBelowOfY (Bord b) {
+		System.out.println("y-1");
 		computerX = hitCoordinateX; 
 		computerY = hitCoordinateY- rangeFromInitialHit; //+ for right or up, - for left or down;
 
@@ -286,6 +309,7 @@ public class Computer extends Speler {
 
 		} else if (b.vakjeArray[computerX][computerY].isBevatBoot()){
 
+			b.vakjeArray[computerX][computerY].setBeschoten(true);
 			b.vakjeArray[computerX][computerY].boot.verliesLeven();
 			System.out.println("Boem!");
 			rangeFromInitialHit += 1;
@@ -299,13 +323,13 @@ public class Computer extends Speler {
 			}
 		} else { // als mis
 
+			b.vakjeArray[computerX][computerY].setBeschoten(true);
 			deltaDirection = true;
 			rangeFromInitialHit =1;
 			System.out.println("Plons");
 		}
 
 	}
-
 }
 
 
