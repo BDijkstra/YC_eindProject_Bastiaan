@@ -9,7 +9,7 @@ public class Boot {
 	public static final int PATROUILLESHIP = 4;
 
 	public static String[] bootNamen = { "Vliegdekschip", "Slagschip", "Onderzeer", "Torpedojager", "Patrouilleship" };
-	public static int[] bootLengten = {5,4, 3, 3, 2};
+	public static int[] bootLengten = {5, 4, 3, 3, 2};
 
 	// static variabelen
 	private static int idCounter = 1;

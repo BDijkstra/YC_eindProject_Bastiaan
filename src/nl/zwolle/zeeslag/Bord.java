@@ -83,8 +83,8 @@ public class Bord {
 		for (int i = -1; i <= 1; i++) {
 			for (int j = -1; j <= 1; j++) {
 
-				if (checkGeldigheidCoordinaten(i, j) && !(i + j == 0) && !(i == j)) {
-					if (vakjeArray[i][j].isBevatBoot()) {
+				if (checkGeldigheidCoordinaten(x+i, y+j) && !(i + j == 0) && !(i == j)) {
+					if (vakjeArray[x+i][y+j].isBevatBoot()) {
 						resultaat = true;
 					}
 

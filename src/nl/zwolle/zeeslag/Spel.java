@@ -6,9 +6,9 @@ public class Spel {
 
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
-		Speler test = new Speler();
-		test.nieuweBoot(4, 4, true, 2);
-		System.out.println(test.bord.toString(true));
+//		Speler test = new Speler();
+//		test.nieuweBoot(4, 4, true, 2);
+//		System.out.println(test.bord.toString(true));
 
 		while (true) {
 
@@ -156,11 +156,9 @@ public class Spel {
 					break;
 				}
 				if (computer.nieuweBoot(x, y, ligging, i)) {
-
+					System.out.println(computer.bord.toString(true));
 					break;
-				} else {
-
-				}
+				} 
 			}
 		}
 	}
@@ -183,7 +181,7 @@ public class Spel {
 				System.out.println("y?");
 				y = scan.nextInt();
 				System.out.println("Wat is de ligging?\n" + " 1: naar rechts vanaf startpunt\n"
-						+ "2: naar beneden vanaf startpunt");
+						+ "2: omhoog vanaf startpunt");
 
 				int richting = scan.nextInt();
 				boolean ligging = false;
@@ -198,6 +196,7 @@ public class Spel {
 
 				if (speler.nieuweBoot(x, y, ligging, i)) {
 					System.out.println("Boot is geplaatst.");
+					System.out.println(speler.bord.toString(true));
 					break;
 				} else {
 					System.out.println("Ongeldige plaats voor deze boot, probeer opnieuw..");
