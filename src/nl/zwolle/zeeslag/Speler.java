@@ -4,7 +4,7 @@ public class Speler {
 
 	protected String naam;
 	protected Bord bord;
-	protected Boot[] bootArray = new Boot[5];
+	protected Boot[] bootArray= new Boot[5];
 	protected int hoeveelheidBoten = 0;
 
 	// Overloaded constructors met standaard waarden: Naam=AI, x=10, y=10
@@ -42,11 +42,10 @@ public class Speler {
 
 	// als coordinaat geldig is en niet al eerder is beschoten, schiet
 	public void schietOpVakje(Bord bord, int x, int y) {
-
-		// user ingegeven coordinaten worden -1 geshift zodat ze in de array
-		// passen.
-		// int x = xCoordinaat-1;
-		// int y = yCoordinaat-1;
+		
+		//user ingegeven coordinaten worden -1 geshift zodat ze in de array passen.
+//		int x = xCoordinaat-1;
+//		int y = yCoordinaat-1;
 
 		if (bord.checkGeldigheidCoordinaten(x, y) && !(bord.vakjeArray[x][y].isBeschoten())) {
 
@@ -66,23 +65,20 @@ public class Speler {
 		}
 
 	}
-
+	
 	public void nieuweBoot(int x, int y, boolean ligging, int bootID) {
-
+		
 		Boot nieuwBoot = new Boot(bootID);
-
-		if (nieuwBoot.plaatsBoot(b, x, y, ligging)) {
-			// nieuwBoot.plaatsBoot(bord, x, y, ligging);
-			bootArray[hoeveelheidBoten] = nieuwBoot;
-			hoeveelheidBoten++;
-		} else {
-			// geeft foutmelding
+		
+		if(nieuwBoot.plaatsBoot(bord, x, y, ligging)){
+		//nieuwBoot.plaatsBoot(bord, x, y, ligging);
+		bootArray[hoeveelheidBoten] = nieuwBoot;
+		hoeveelheidBoten++;}
+		else{
+			//geeft foutmelding
 		}
 	}
 
-	// Controleert of de speler geen levende boten meer heeft. loopt door de
-	// bootArray en vergelijkt de hoeveelheid dode boten met het totaal aantal
-	// boten van de speler
 	public boolean spelerHeeftVerloren() {
 
 		int teller = 0;
