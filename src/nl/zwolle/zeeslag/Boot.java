@@ -103,20 +103,20 @@ public class Boot {
 
 		} else {
 			yMax = y + lengte-1;
-
 			xMax = x;
 		}
 
 		// bekijk of er al boten zijn op die posities
 		// en of de boot niet buiten het veld valt.
 
-		for (int ix = xMin; ix < xMax; ix++) {
-			for (int iy = yMin; iy < yMax; iy++) {
+		for (int ix = xMin; ix <= xMax; ix++) {
+			for (int iy = yMin; iy <= yMax; iy++) {
 
 				// als het vakje zelf of de vakjes om het gekozen vakje een boot
 				// bevatten, of het is een ongeldig vakje kan de boot niet
 				// geplaatst worden
 				if (b.vakjeArray[ix][iy].isBevatBoot() || b.surroundedByBoats(ix, iy) || !(b.checkGeldigheidCoordinaten(ix, iy))) {
+					
 					legalePlaats = false;
 					break;
 				}

@@ -18,7 +18,8 @@ public class Spel {
 		//Boot z = new Boot(2);
 		
 		Speler speler1 = new Speler("Speler1",10,10);
-		speler1.nieuweBoot(2, 3, false, 1);
+		speler1.nieuweBoot(1, 3, false, 1);
+		speler1.nieuweBoot(1, 4, false, 1);
 		speler1.nieuweBoot(6, 6, false, 1);
 		
 		

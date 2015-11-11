@@ -82,29 +82,29 @@ public class Bord {
 	public boolean surroundedByBoats(int x, int y){
 
 		boolean resultaat = false;
-		if (!vakjeArray[x][y].isBevatBoot()){
-
-			for(int i =-1; i<=1; i++){
-				for(int j =-1; j<=1; j++){
 
 
-					if(checkGeldigheidCoordinaten(i, j) && !(i+j==0) && !(i==j)){
-						if (vakjeArray[i][j].isBevatBoot()){
-							resultaat= true;	
-						}
-						
+		for(int i =-1; i<=1; i++){
+			for(int j =-1; j<=1; j++){
+
+
+				if(checkGeldigheidCoordinaten(i, j) && !(i+j==0) && !(i==j)){
+					if (vakjeArray[i][j].isBevatBoot()){
+						resultaat= true;	
 					}
+
 				}
 			}
-
-
 		}
+
+
+
 		return resultaat;
 	}
 
 
-	
 
-	
+
+
 
 }
