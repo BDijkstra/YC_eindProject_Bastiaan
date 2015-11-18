@@ -33,6 +33,9 @@ public class Computer extends Speler {
 				computerY = (int) (Math.random() * b.getBordLengte());
 				if (b.checkGeldigheidCoordinaten(computerX, computerY) && !(b.vakjeArray[computerX][computerY].isBeschoten())){
 					b.vakjeArray[computerX][computerY].setBeschoten(true);
+					
+					System.out.println("computer schiet op: "+ computerX+" "+computerY);
+					
 					shotSucceeded =true;
 					System.out.println(computerX + " " + computerY);
 
