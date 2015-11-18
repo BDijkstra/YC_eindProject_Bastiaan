@@ -16,6 +16,15 @@ public class Speler {
 
 	}
 
+	public int getHoeveelheidBoten() {
+		return hoeveelheidBoten;
+	}
+
+	public void setHoeveelheidBoten(int hoeveelheidBoten) {
+		this.hoeveelheidBoten = hoeveelheidBoten;
+	}
+
+	
 	public Speler(String naam) {
 		this(naam, 10, 10);
 

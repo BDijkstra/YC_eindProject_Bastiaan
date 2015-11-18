@@ -2,6 +2,7 @@ package nl.zwolle.zeeslag;
 
 public class Computer extends Speler {
 
+	//instance variabelen
 	boolean shotSucceeded = false;
 	int hitCoordinateX = -1;
 	int hitCoordinateY = -1;
@@ -12,7 +13,6 @@ public class Computer extends Speler {
 	int computerY = 0;
 	int rangeFromInitialHit =2;
 
-
 	//constructor
 	public Computer(int xCoordinaat, int yCoordinaat) {
 		bord = new Bord(xCoordinaat, yCoordinaat);
@@ -20,28 +20,18 @@ public class Computer extends Speler {
 	}
 
 	// overloaded method from Speler
-	public void schietOpVakje(Bord b) {
-
-
-
+	public void schietOpVakje(Bord b) { // random schot
 		//check whether previous shot was a hit and continue to targeted shooting
 		if (hitCoordinateX >= 0){
 			targetedShot(b);
-
 		}else{
-
-
 			// else shoot at random coordinates, until the computer shot at a field that hasn't already been shot
 			do{
 				shotSucceeded = false;
 
 				computerX = (int) (Math.random() * b.getBordBreedte());
 				computerY = (int) (Math.random() * b.getBordLengte());
-
-
-
 				if (b.checkGeldigheidCoordinaten(computerX, computerY) && !(b.vakjeArray[computerX][computerY].isBeschoten())){
-
 					b.vakjeArray[computerX][computerY].setBeschoten(true);
 					
 					System.out.println("computer schiet op: "+ computerX+" "+computerY);
@@ -53,14 +43,12 @@ public class Computer extends Speler {
 						System.out.println("Boem!");
 						b.vakjeArray[computerX][computerY].boot.verliesLeven();
 						hitCoordinateX = computerX;
-						hitCoordinateY = computerY;
-						
+						hitCoordinateY = computerY;					
 						if (b.vakjeArray[computerX][computerY].boot.isDood()){
 							hitCoordinateX = -1;
 							hitCoordinateY = -1;
 							System.out.println("Boot gezonken");
 						}
-
 					} else {
 						System.out.println("Plons");
 					}
@@ -71,9 +59,7 @@ public class Computer extends Speler {
 		}
 	}
 
-
-
-	public void targetedShot(Bord b){
+	public void targetedShot(Bord b){// Gebruik deze methode als vorig schot raak was.
 
 		if(secondHit == true){
 			continuedTargetedShot(b);
@@ -119,9 +105,6 @@ public class Computer extends Speler {
 
 
 				if (b.checkGeldigheidCoordinaten(computerX, computerY)&& (!(b.vakjeArray[computerX][computerY].isBeschoten()))){
-					
-
-
 						b.vakjeArray[computerX][computerY].setBeschoten(true);
 						System.out.println(computerX + " " + computerY);
 						shotSucceeded =true;
@@ -131,7 +114,6 @@ public class Computer extends Speler {
 							b.vakjeArray[computerX][computerY].boot.verliesLeven();
 							secondHit = true;
 							System.out.println("Boem!");
-
 
 							if (b.vakjeArray[computerX][computerY].boot.isDood()){
 								hitCoordinateX = -1;
@@ -143,22 +125,16 @@ public class Computer extends Speler {
 							System.out.println("Plons");
 							secondHit = false;
 						}
-
 					} else { // if vakje is invalid
 						
 						shotSucceeded =false;
 						secondHit = false;
 					}
-				
-
 			}while(!shotSucceeded);
-
 		}
 	}
-
-
 	
-	public void continuedTargetedShot(Bord b){
+	public void continuedTargetedShot(Bord b){//Vervolg gericht schieten in het verlengde
 		
 		//search further for the boat
 		//determine direction of continued shot
@@ -178,11 +154,8 @@ public class Computer extends Speler {
 				shootBelowOfY(b);
 			}
 		}
-
-
 	}
-
-
+	
 	public void shootRightOfX(Bord b){
 		System.out.println("x+1");
 		computerX = hitCoordinateX + rangeFromInitialHit; //+ for right or up, - for left or down
@@ -221,9 +194,7 @@ public class Computer extends Speler {
 
 	}
 
-
-
-	private void shootLeftOfX(Bord b) {
+	public void shootLeftOfX(Bord b) {
 		System.out.println("x-1");
 		computerX = hitCoordinateX - rangeFromInitialHit; //+ for right or up, - for left or down
 		computerY = hitCoordinateY;
@@ -296,9 +267,7 @@ public class Computer extends Speler {
 
 	}
 
-
-
-	private void shootBelowOfY (Bord b) {
+	public void shootBelowOfY (Bord b) {
 		System.out.println("y-1");
 		computerX = hitCoordinateX; 
 		computerY = hitCoordinateY- rangeFromInitialHit; //+ for right or up, - for left or down;
