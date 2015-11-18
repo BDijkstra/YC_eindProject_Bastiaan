@@ -29,14 +29,12 @@ public class Spel {
 			System.out.println("Wilt u opnieuw spelen? y/n");
 			String answer = scan.next();
 			if (answer.equals("n")) {
+				System.out.println("Tot ziens!");
 				break;
 			}
 			if (answer.equals("y")) {
 				continue;
-			} else {
-				System.out.println("Tot ziens!");
-				break;
-			}
+			} 
 		}
 		
 	}
@@ -124,6 +122,9 @@ public class Spel {
 				break;
 			}
 
+			computer.schietOpVakje(speler1.getBord());
+			System.out.println("Computer schiet: ");
+			System.out.println(speler1.getBord().toString(false));
 			if (speler1.spelerHeeftVerloren()) {
 				System.out.println("De computer heeft al uw boten vernietigd, u hebt verloren...");
 				break;
@@ -158,7 +159,7 @@ public class Spel {
 				
 				
 				if (computer.nieuweBoot(x, y, ligging, i)) {
-					System.out.println(computer.bord.toString(true));
+					//System.out.println(computer.bord.toString(true));
 					break;
 				} 
 			}
