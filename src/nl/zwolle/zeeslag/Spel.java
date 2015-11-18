@@ -6,10 +6,6 @@ public class Spel {
 
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
-//		Speler test = new Speler();
-//		test.nieuweBoot(4, 4, true, 2);
-//		System.out.println(test.bord.toString(true));
-
 		while (true) {
 
 			System.out.println("Welkom bij Zeeslag.");
@@ -25,7 +21,6 @@ public class Spel {
 				spelMensVsComputer();
 				break;
 			}
-
 			System.out.println("Wilt u opnieuw spelen? y/n");
 			String answer = scan.next();
 			if (answer.equals("n")) {
